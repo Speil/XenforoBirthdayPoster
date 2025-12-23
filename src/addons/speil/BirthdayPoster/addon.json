@@ -1,0 +1,11 @@
+{
+    "legacy_addon_id": "",
+    "title": "Speils Birthday Poster",
+    "description": "Posts birthday wishes in a specified thread.",
+    "version_id": 1000010,
+    "version_string": "0.0.1",
+    "dev": "Speil",
+    "dev_url": "",
+    "apps": ["Pub"],
+    "icon": ""
+}
