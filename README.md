@@ -1,5 +1,8 @@
 # Speils Birthday Addon for Xenforo
 
+## v 0.0.2
+including settings and phrased in admin cp
+
 ## v 0.0.1
 
 Add cron manually: 
