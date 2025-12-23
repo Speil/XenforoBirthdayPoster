@@ -74,5 +74,9 @@ class BirthdayCheck
                 $replier->save();
             }
         });
+
+        // 6. Log
+        XF::LogError("SpeilsBirthdayPoster: Post in thread {$threadID} created.", false);
+        
     }
 }
