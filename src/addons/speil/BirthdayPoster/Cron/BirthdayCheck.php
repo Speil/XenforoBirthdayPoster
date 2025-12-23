@@ -9,9 +9,16 @@ class BirthdayCheck
     public static function runDailyCheck()
     {
         // 1. Settings
-        $threadId = 1; //in which thread the wishes should be posted 
-        $userIdSender = 1; //from which user should the wishes be posted
-        $minPosts = 10;  //min number of posts the user must have, to be greeted
+        $options = XF::options();
+        
+        $threadId = $options->SpeilBirthdayPosterThreadID; //in which thread the wishes should be posted  SpeilBirthdayPosterThreadID
+        $userIdSender = $options->SpeilBirthdayPosterUserID; //from which user should the wishes be posted SpeilBirthdayPosterUserID
+        $minPosts = $options->SpeilBirthdayPosterMinPosts;  //min number of posts the user must have, to be greeted SpeilBirthdayPosterMinPosts
+
+        //check
+        if (!threadId || !$userIdSender) {
+            return;
+        }
         
         $day = date('j');
         $month = date('n');
