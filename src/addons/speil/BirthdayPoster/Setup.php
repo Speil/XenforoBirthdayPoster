@@ -8,24 +8,39 @@ use XF\AddOn\StepRunnerUninstallTrait;
 use XF\AddOn\StepRunnerUpgradeTrait;
 
 class Setup extends AbstractSetup
-{
+	{
 	use StepRunnerInstallTrait;
 	use StepRunnerUpgradeTrait;
 	use StepRunnerUninstallTrait;
 
-    // Install:
-    /*
-    public function installStep1()
-    {
-        // abc
-    }
-    */
+	/**
+	* defaults
+	*/
+	public function installStep1()
+		{
+		$options = \XF::em()->getFinder('XF:Option')->whereIds([
+		'SpeilBirthdayPosterThreadID',
+		'SpeilBirthdayPosterUserID',
+		'SpeilBirthdayPosterMinPosts'
+		])->fetch();
 
-    // Deinstall
-    /*
-    public function uninstallStep1()
-    {
-        // abc
-    }
-    */
+		foreach ($options AS $option) {
+		if ($option->option_id == 'SpeilBirthdayPosterMinPosts') {
+		$option->option_value = 50;
+		}
+		// you can define defaults here
+		if ($option->option_id == 'SpeilBirthdayPosterUserID') {
+		$option->option_value = 1; 
+		}
+		$option->save();
+		}
+	}
+
+/**
+* deinstall
+*/
+public function uninstallStep1()
+{
+// deinstall
+}
 }
