@@ -46,9 +46,7 @@ class BirthdayCheck
         $namesList = implode(', ', $names);
 
         // 4. write message
-        $message = "Heute feiert unsere aktive Community! 🎂\n\n"
-                 . "Herzlichen Glückwunsch zum Geburtstag an: " . $namesList . "!\n"
-                 . "Vielen Dank für eure Beiträge und alles Gute für das neue Lebensjahr! 🎉";
+        $message = XF::phrase('speil_birthday_poster_msg', ['names' => $namesList]);
 
         // 5. Post create
         $app = XF::app();
