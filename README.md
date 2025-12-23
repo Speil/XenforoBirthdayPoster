@@ -1,5 +1,9 @@
 # Speils Birthday Addon for Xenforo
 
+## v 1.0.0
+download on the official XF addon lib: 
+https://xenforo.com/community/resources/speil-birthday-poster.10193/
+
 ## v 0.0.2
 including settings and phrased in admin cp
 
