@@ -4,3 +4,5 @@
 
 Add cron manually: 
 Cron-Callback: speil\BirthdayPoster\Cron\BirthdayCheck :: runDailyCheck
+
+Change settings manually in Cron \ BirthdayCheck.php
