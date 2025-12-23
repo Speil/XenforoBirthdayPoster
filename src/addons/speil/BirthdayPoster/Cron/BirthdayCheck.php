@@ -74,7 +74,7 @@ class BirthdayCheck
         });
 
         // 6. Log
-        XF::LogError("SpeilsBirthdayPoster: Post in thread {$threadId} created.", false);
+        //XF::LogError("SpeilsBirthdayPoster: Post in thread {$threadId} created.", false);
         
     }
 }
