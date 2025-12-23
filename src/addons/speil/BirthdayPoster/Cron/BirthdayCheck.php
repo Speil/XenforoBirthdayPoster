@@ -16,7 +16,7 @@ class BirthdayCheck
         $minPosts = $options->SpeilBirthdayPosterMinPosts;  //min number of posts the user must have, to be greeted SpeilBirthdayPosterMinPosts
 
         //check
-        if (!threadId || !$userIdSender) {
+        if (!$threadId || !$userIdSender) {
             return;
         }
         
