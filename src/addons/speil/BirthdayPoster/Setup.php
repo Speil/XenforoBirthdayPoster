@@ -13,19 +13,19 @@ class Setup extends AbstractSetup
 	use StepRunnerUpgradeTrait;
 	use StepRunnerUninstallTrait;
 
-    // Hier könnten Installations-Schritte stehen, z.B.:
+    // Install:
     /*
     public function installStep1()
     {
-        // Beispiel: Eine Tabelle anlegen, falls nötig
+        // abc
     }
     */
 
-    // Hier könnten Deinstallations-Schritte stehen
+    // Deinstall
     /*
     public function uninstallStep1()
     {
-        // Beispiel: Eigene Tabellen wieder löschen
+        // abc
     }
     */
 }
