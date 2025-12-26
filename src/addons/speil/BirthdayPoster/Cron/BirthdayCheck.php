@@ -32,6 +32,8 @@ class BirthdayCheck
             ->where('message_count', '>=', $minPosts)
             ->where('user_state', 'valid')
             ->where('is_banned', 0)
+            // dont great yourself
+            ->where('user_id', '<>', $userIdSender)
             ->fetch();
 
         if ($users->count() == 0) {
