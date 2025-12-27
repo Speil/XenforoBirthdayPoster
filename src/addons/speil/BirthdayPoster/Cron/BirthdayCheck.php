@@ -14,6 +14,7 @@ class BirthdayCheck
         $threadId = $options->SpeilBirthdayPosterThreadID; //in which thread the wishes should be posted  SpeilBirthdayPosterThreadID
         $userIdSender = $options->SpeilBirthdayPosterUserID; //from which user should the wishes be posted SpeilBirthdayPosterUserID
         $minPosts = $options->SpeilBirthdayPosterMinPosts;  //min number of posts the user must have, to be greeted SpeilBirthdayPosterMinPosts
+        $maxInactivityDays = $options->SpeilbirthdayPosterMaxInactivity; // max days inctive
 
         //check
         if (!$threadId || !$userIdSender) {
@@ -34,7 +35,13 @@ class BirthdayCheck
             ->where('is_banned', 0)
             // dont great yourself
             ->where('user_id', '<>', $userIdSender)
-            ->fetch();
+            // check inactivity
+        if ($maxInactivityDays > 0) {
+            $cutOffDate = XF::$time - ($maxInactivityDays * 86400); // 86400 Sec = 1 day
+            $finder->where('last_activity', '>=', $cutOffDate);
+        }
+            
+        $users = $finder->fetch();
 
         if ($users->count() == 0) {
             return;
