@@ -34,7 +34,7 @@ class BirthdayCheck
             ->where('user_state', 'valid')
             ->where('is_banned', 0)
             // dont great yourself
-            ->where('user_id', '<>', $userIdSender)
+            ->where('user_id', '<>', $userIdSender);
             // check inactivity
         if ($maxInactivityDays > 0) {
             $cutOffDate = XF::$time - ($maxInactivityDays * 86400); // 86400 Sec = 1 day
