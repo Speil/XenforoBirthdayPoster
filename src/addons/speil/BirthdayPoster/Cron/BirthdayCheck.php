@@ -30,7 +30,7 @@ class BirthdayCheck
             ->with('Profile')
             ->where('Profile.dob_day', $day)
             ->where('Profile.dob_month', $month)
-            ->where('Profile.show_dob_date', 1)
+            ->where('Option.show_dob_date', 1)
             ->where('message_count', '>=', $minPosts)
             ->where('user_state', 'valid')
             ->where('is_banned', 0)
