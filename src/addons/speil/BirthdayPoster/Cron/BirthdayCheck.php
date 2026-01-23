@@ -8,6 +8,17 @@ class BirthdayCheck
 {
     public static function runDailyCheck()
     {
+
+        // double post check
+        $app = XF::app();
+        $simpleCache = $app->simpleCache();
+        $lastRunDate = $simpleCache->getValue('speil/BirthdayPoster', 'lastRunDate');
+        $today = date('Y-m-d');
+
+        if ($lastRunDate === $today) {
+            return;
+        }
+        
         // 1. Settings
         $options = XF::options();
         
@@ -66,7 +77,7 @@ class BirthdayCheck
             return;
         }
 
-        XF::asVisitor($userSender, function() use ($threadId, $message, $app) {
+        XF::asVisitor($userSender, function() use ($threadId, $message, $app, $simpleCache, $today) {
             $thread = $app->find('XF:Thread', $threadId);
             if (!$thread) {
                 return;
@@ -80,6 +91,11 @@ class BirthdayCheck
             
             if ($replier->validate()) {
                 $replier->save();
+
+                // double post check date save
+                $simpleCache->setValue('speil/BirthdayPoster', 'lastRunDate', $today);
+            }
+        });
             }
         });
 
